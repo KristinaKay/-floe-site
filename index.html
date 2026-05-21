@@ -141,6 +141,33 @@
 
   .nav-links a:hover { color: var(--cream); }
 
+  /* ─── HAMBURGER TOGGLE ─── */
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hamburger-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--cream);
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    pointer-events: none;
+  }
+
+  .nav-toggle[aria-expanded="true"] .hamburger-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] .hamburger-bar:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nav-toggle[aria-expanded="true"] .hamburger-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
   /* ─── BACK TO TOP ─── */
   .back-to-top {
     position: fixed;
@@ -285,7 +312,7 @@
     margin-bottom: 28px;
   }
 
-  .hero-name .accent {
+  .accent, span.accent {
     color: var(--terracotta);
     font-style: italic;
   }
@@ -838,6 +865,38 @@
     border-top-color: rgba(196,96,58,0.3);
   }
 
+  .prog-cta {
+    display: inline-block;
+    margin-top: 24px;
+    padding: 12px 28px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: rgba(251,247,240,0.85);
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+    position: relative;
+  }
+
+  .prog-cta:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.6);
+    color: var(--cream);
+  }
+
+  .prog.soar-wonder .prog-cta {
+    border-color: rgba(196,96,58,0.5);
+    color: var(--terracotta);
+  }
+
+  .prog.soar-wonder .prog-cta:hover {
+    background: rgba(196,96,58,0.12);
+    border-color: var(--terracotta);
+  }
+
   /* ============================================================
      HOW IT WORKS
      ============================================================ */
@@ -1354,8 +1413,22 @@
      ============================================================ */
   @media (max-width: 900px) {
     .nav-inner { padding: 0 28px; }
-    .nav-links { gap: 20px; }
-    .nav-links a { font-size: 11px; }
+    .nav-toggle { display: flex; }
+    .nav-links {
+      display: none;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      background: var(--ink);
+      flex-direction: column;
+      padding: 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      z-index: 99;
+      gap: 0;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links li { border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .nav-links a { display: block; padding: 16px 28px; font-size: 13px; letter-spacing: 0.1em; }
 
     .hero {
       grid-template-columns: 1fr;
@@ -1403,12 +1476,6 @@
     .belief-marker { font-size: 28px; }
   }
 
-  @media (max-width: 600px) {
-    .nav-inner { flex-direction: column; height: auto; padding: 12px 20px; gap: 8px; }
-    .nav-links { flex-wrap: wrap; gap: 12px; justify-content: center; }
-    .nav-links a { font-size: 10px; }
-  }
-
   @media (max-width: 480px) {
     .hero-name { font-size: 64px; }
     .hero-left { padding: 48px 24px 32px; }
@@ -1439,7 +1506,15 @@
 <nav class="site-nav" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="#" class="nav-brand" aria-label="FLOE — For Love of Education, return to top">F<span class="accent">L</span>OE</a>
-    <ul class="nav-links" role="list">
+    <button type="button" class="nav-toggle" id="nav-toggle"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="nav-links">
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+    </button>
+    <ul class="nav-links" id="nav-links" role="list">
       <li><a href="#who">Who We Serve</a></li>
       <li><a href="#programs">Programs</a></li>
       <li><a href="#how">How It Works</a></li>
@@ -1555,6 +1630,7 @@
         <p class="prog-sub">Rediscover · Reconnect · Reimagine</p>
         <p>For learners who need to slow down and remember who they are before deciding where they're going. Open-ended, curiosity-driven, reflective.</p>
         <p class="prog-promise">"Before we go anywhere — let's remember who you are."</p>
+        <a href="https://calendly.com/conversation-floe/begin-a-conversation-with-floe" class="prog-cta">Begin the Conversation</a>
       </div>
       <div class="prog soar">
         <span class="prog-initial" aria-hidden="true">S</span>
@@ -1562,6 +1638,7 @@
         <p class="prog-sub">Clarify · Build · Launch</p>
         <p>For learners who have a sense of direction but keep hitting walls. Action-oriented, goal-focused, structured for momentum.</p>
         <p class="prog-promise">"You know where you want to go — let's build the runway."</p>
+        <a href="https://calendly.com/conversation-floe/begin-a-conversation-with-floe" class="prog-cta">Begin the Conversation</a>
       </div>
     </div>
 
@@ -1572,6 +1649,7 @@
       <p class="prog-sub">Explore · Play · Grow · Wonder</p>
       <p>For families with young learners (2–14) who want to build a culture of curiosity from the very beginning. Before the system defines them, we help families design a learning life that celebrates who their child already is — and nurtures who they're becoming.</p>
       <p class="prog-promise">"It's never too early to fall in love with learning."</p>
+      <a href="https://calendly.com/conversation-floe/begin-a-conversation-with-floe" class="prog-cta">Begin the Conversation</a>
     </div>
   </div>
 </section>
@@ -1664,7 +1742,7 @@
       </div>
       <div class="founder-bio">
         <h3 id="founder-heading">Kristina Brooke Daniele</h3>
-        <p class="founder-title">Founder, FLOE · Educator · Author · Advocate</p>
+        <p class="founder-title">Founder, F<span class="accent">L</span>OE · Educator · Author · Advocate</p>
         <p>With 21 years of experience spanning classroom teaching, curriculum design, and independent consulting, Kristina Brooke built FLOE because she lived the gap it fills — as a neurodivergent educator, a parent of a ND young adult, and someone who has been her own first client.</p>
         <p>She is the author of the Amazon bestselling "Civil Rights Then &amp; Now" and holds a Masters of Science in Teaching from Fordham University. She doesn't just understand this work — she is this work.</p>
         <div class="cred-row">
@@ -1716,7 +1794,7 @@
 <section class="cta-section" id="contact" aria-labelledby="cta-heading">
   <h2 id="cta-heading">Ready to redefine<br><em>the route?</em></h2>
   <p>Spaces are limited to 5–7 clients per cohort. Start with a conversation.</p>
-  <a href="https://forloveofeducation.com" class="cta-btn">Begin the Conversation</a>
+  <a href="https://calendly.com/conversation-floe/begin-a-conversation-with-floe" class="cta-btn">Begin the Conversation</a>
   <span class="cta-url">forloveofeducation.com</span>
 </section>
 
@@ -1745,6 +1823,22 @@
   });
   btn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  const navToggle = document.getElementById('nav-toggle');
+  const navLinksList = document.getElementById('nav-links');
+  navToggle.addEventListener('click', () => {
+    const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+    navToggle.setAttribute('aria-expanded', String(!isOpen));
+    navLinksList.classList.toggle('open', !isOpen);
+    navToggle.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
+  });
+  navLinksList.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navToggle.setAttribute('aria-expanded', 'false');
+      navLinksList.classList.remove('open');
+      navToggle.setAttribute('aria-label', 'Open navigation menu');
+    });
   });
 </script>
 
