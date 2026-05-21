@@ -3,25 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="FLOE — For Love of Education supports neurodivergent learners, teens, and young adults with individualized coaching, mentorship, and community. Redefine the route.">
+<meta name="description" content="FLOE: For Love of Education supports neurodivergent learners, teens, and young adults with individualized coaching, mentorship, and community. Redefine the route.">
 <meta name="theme-color" content="#1C1410">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="canonical" href="https://forloveofeducation.com">
 <link rel="icon" href="imgs/floe-logo-dark.svg" type="image/svg+xml">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://forloveofeducation.com">
-<meta property="og:title" content="FLOE — For Love of Education: Redefine the Route">
+<meta property="og:title" content="FLOE: For Love of Education: Redefine the Route">
 <meta property="og:description" content="Supporting neurodivergent learners, teens, and young adults with individualized coaching, mentorship, and community.">
 <meta property="og:image" content="https://forloveofeducation.com/imgs/community.jpg">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="FLOE — For Love of Education: Redefine the Route">
+<meta name="twitter:title" content="FLOE: For Love of Education: Redefine the Route">
 <meta name="twitter:description" content="Supporting neurodivergent learners, teens, and young adults with individualized coaching, mentorship, and community.">
 <meta name="twitter:image" content="https://forloveofeducation.com/imgs/community.jpg">
 
-<title>FLOE — For Love of Education: Redefine the Route</title>
+<title>FLOE: For Love of Education: Redefine the Route to Success</title>
 
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,7 +33,7 @@
 {
   "@context": "https://schema.org",
   "@type": "EducationalOrganization",
-  "name": "FLOE — For Love of Education",
+  "name": "FLOE: For Love of Education",
   "alternateName": "FLOE",
   "url": "https://forloveofeducation.com",
   "description": "FLOE supports neurodivergent learners, teens, and young adults with individualized coaching, mentorship, and community-based programs.",
@@ -62,7 +63,7 @@
      --rule: divider line color
      ============================================================ */
   :root {
-    --ink: #1C1410;
+    --ink: #1c1410;
     --cream: #FBF7F0;
     --warm1: #F2E8D6;
     --warm2: #E8D5B7;
@@ -92,12 +93,16 @@
 
   /* ─── SITE NAV ─── */
   .site-nav {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 100;
     background: var(--ink);
     border-bottom: 1px solid rgba(255,255,255,0.08);
   }
+
+  header { padding-top: var(--nav-h); }
 
   .nav-inner {
     max-width: 1080px;
@@ -135,6 +140,43 @@
   }
 
   .nav-links a:hover { color: var(--cream); }
+
+  /* ─── BACK TO TOP ─── */
+  .back-to-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--ink);
+    border: 2px solid var(--rule);
+    color: var(--cream);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.25s, transform 0.25s, visibility 0.25s, background 0.25s, border-color 0.25s;
+    z-index: 99;
+  }
+
+  .back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .back-to-top:hover {
+    background: var(--terracotta);
+    border-color: var(--terracotta);
+  }
+
+  @media (max-width: 480px) {
+    .back-to-top { bottom: 20px; right: 20px; }
+  }
 
   /* ─── SKIP LINK ─── */
   .skip-link {
@@ -635,10 +677,15 @@
   .who-item {
     padding-left: 24px;
     border-left: 3px solid var(--rule);
-    transition: border-color 0.25s;
+    transition: border-color 0.25s, transform 0.25s, background 0.25s;
+    border-radius: 0 4px 4px 0;
   }
 
-  .who-item:hover { border-left-color: var(--terracotta); }
+  .who-item:hover {
+    border-left-color: var(--terracotta);
+    transform: translateX(6px);
+    background: rgba(173,80,48,0.05);
+  }
 
   .who-item h3 {
     font-family: 'Fraunces', serif;
@@ -688,10 +735,14 @@
     border: 1px solid rgba(255,255,255,0.08);
     position: relative;
     overflow: hidden;
-    transition: border-color 0.3s;
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
   }
 
-  .prog:hover { border-color: rgba(255,255,255,0.2); }
+  .prog:hover {
+    border-color: rgba(255,255,255,0.28);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  }
   .prog.wonder { border-top: 3px solid var(--gold); }
   .prog.soar { border-top: 3px solid var(--sage); margin-top: 0; }
 
@@ -1111,6 +1162,13 @@
     padding: 24px 0;
     border-bottom: 1px solid var(--rule);
     align-items: flex-start;
+    transition: background 0.25s, transform 0.25s;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .belief-item:hover {
+    background: rgba(0,0,0,0.04);
+    transform: translateX(4px);
   }
 
   .belief-item:last-child { border-bottom: none; }
@@ -1380,7 +1438,7 @@
 <header>
 <nav class="site-nav" aria-label="Main navigation">
   <div class="nav-inner">
-    <a href="#" class="nav-brand" aria-label="FLOE — For Love of Education, return to top">FLOE</a>
+    <a href="#" class="nav-brand" aria-label="FLOE — For Love of Education, return to top">F<span class="accent">L</span>OE</a>
     <ul class="nav-links" role="list">
       <li><a href="#who">Who We Serve</a></li>
       <li><a href="#programs">Programs</a></li>
@@ -1401,11 +1459,11 @@
   <div class="hero-left">
     <p class="eyebrow">For Love of Education</p>
     <h1 class="hero-name" aria-label="FLOE">F<span class="accent">L</span>OE</h1>
-    <p class="hero-tagline">Redefine the Route</p>
+    <p class="hero-tagline">Redefine the Route to Success</p>
   </div>
 
   <div class="hero-right">
-    <div class="ecosystem" role="img" aria-label="The FLOE ecosystem: the Learner sits at the center, surrounded by overlapping rings representing Curiosity, Support, Mentors, Community, Goals, and FLOE itself.">
+    <div class="ecosystem" role="img" aria-label="The FLOE Ecosystem: the Learner sits at the center, surrounded by overlapping rings representing Curiosity, Support, Mentors, Community, Goals, and FLOE itself.">
       <div class="ring ring-learner">
         <span class="ring-label" aria-hidden="true">Learner</span>
       </div>
@@ -1425,7 +1483,7 @@
         <span class="ring-label" aria-hidden="true">Goals</span>
       </div>
       <div class="ring ring-floe">
-        <span class="ring-label" aria-hidden="true">FLOE</span>
+        <span class="ring-label" aria-hidden="true">F<span class="accent">L</span>OE</span>
       </div>
       <span class="ecosystem-caption" aria-hidden="true">The FLOE Ecosystem</span>
     </div>
@@ -1667,11 +1725,28 @@
 <!-- FOOTER -->
 <footer>
   <div>
-    <div class="footer-brand">FLOE</div>
+    <div class="footer-brand">F<span class="accent">L</span>OE</div>
     <div class="footer-tagline">For Love of Education · Redefine the Route</div>
   </div>
   <a href="https://forloveofeducation.com">Visit forloveofeducation.com</a>
 </footer>
+
+<!-- BACK TO TOP -->
+<button type="button" class="back-to-top" id="back-to-top" aria-label="Back to top">
+  <svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+    <path d="M10 14V6M10 6L6 10M10 6L14 10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
+
+<script>
+  const btn = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 400);
+  });
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
 
 </body>
 </html>
