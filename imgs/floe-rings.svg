@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 506" role="img" aria-label="The FLOE ecosystem: the Learner sits at the center, surrounded by overlapping rings representing Curiosity, Support, Mentors, Community, Goals, and FLOE itself.">
+  <!-- Render order = your original z-index, bottom to top -->
+
+  <!-- Goals (z-index 2) -->
+  <g>
+    <circle cx="280" cy="310" r="58" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.22)" stroke-width="3"/>
+    <text x="280" y="310" text-anchor="middle" dominant-baseline="central"
+          font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
+          font-weight="700" font-size="10" letter-spacing="1" fill="rgba(251,247,240,0.7)">GOALS</text>
+  </g>
+
+  <!-- Mentors (z-index 3) -->
+  <g>
+    <circle cx="357" cy="237" r="79" fill="rgba(94,142,114,0.14)" stroke="rgba(94,142,114,0.55)" stroke-width="3"/>
+    <text x="357" y="237" text-anchor="middle" dominant-baseline="central"
+          font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
+          font-weight="700" font-size="11" letter-spacing="1.1" fill="rgba(251,247,240,0.9)">MENTORS</text>
+  </g>
+
+  <!-- Community (z-index 3) -->
+  <g>
+    <circle cx="209.5" cy="315.5" r="77.5" fill="rgba(160,100,60,0.12)" stroke="rgba(196,130,58,0.45)" stroke-width="3"/>
+    <text x="209.5" y="315.5" text-anchor="middle" dominant-baseline="central"
+          font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
+          font-weight="700" font-size="11" letter-spacing="1.1" fill="rgba(251,247,240,0.9)">COMMUNITY</text>
+  </g>
+
+  <!-- Curiosity (z-index 4) -->
+  <g>
+    <circle cx="161" cy="151" r="69" fill="rgba(196,96,58,0.14)" stroke="rgba(196,96,58,0.55)" stroke-width="3"/>
+    <text x="161" y="151" text-anchor="middle" dominant-baseline="central"
+          font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
+          font-weight="700" font-size="11" letter-spacing="1.1" fill="rgba(251,247,240,0.9)">CURIOSITY</text>
+  </g>
+
+  <!-- FLOE (z-index 4) — slightly elliptical (154x144) -->
+  <g>
+    <ellipse cx="285" cy="130" rx="77" ry="72" fill="rgba(122,110,158,0.14)" stroke="rgba(122,110,158,0.5)" stroke-width="3"/>
+    <text x="285" y="130" text-anchor="middle" dominant-baseline="central"
+          font-family="Fraunces, Georgia, 'Times New Roman', serif"
+          font-style="italic" font-weight="900" font-size="19" letter-spacing="-0.19" fill="#FBF7F0">FLOE</text>
+  </g>
+
+  <!-- Learner (z-index 5) — largest, center -->
+  <g>
+    <circle cx="214" cy="224" r="96" fill="rgba(201,146,42,0.16)" stroke="rgba(201,146,42,0.6)" stroke-width="3"/>
+    <text x="214" y="224" text-anchor="middle" dominant-baseline="central"
+          font-family="Fraunces, Georgia, 'Times New Roman', serif"
+          font-style="italic" font-weight="900" font-size="16" fill="#C9922A">Learner</text>
+  </g>
+
+  <!-- Support (z-index 7) — top layer, white-bordered -->
+  <g>
+    <circle cx="131" cy="254" r="49" fill="rgba(251,247,240,0.12)" stroke="rgba(251,247,240,0.9)" stroke-width="3"/>
+    <text x="131" y="254" text-anchor="middle" dominant-baseline="central"
+          font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
+          font-weight="700" font-size="11" letter-spacing="1.1" fill="rgba(251,247,240,0.9)">SUPPORT</text>
+  </g>
+
+  <!-- Caption -->
+  <text x="240" y="498" text-anchor="middle"
+        font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
+        font-weight="600" font-size="10" letter-spacing="1.2" fill="rgba(251,247,240,0.65)">THE FLOE ECOSYSTEM</text>
+</svg>
