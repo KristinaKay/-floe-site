@@ -3,8 +3,51 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="FLOE — For Love of Education supports neurodivergent learners, teens, and young adults with individualized coaching, mentorship, and community. Redefine the route.">
+<meta name="theme-color" content="#1C1410">
+<link rel="canonical" href="https://forloveofeducation.com">
+<link rel="icon" href="imgs/floe-logo-dark.svg" type="image/svg+xml">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://forloveofeducation.com">
+<meta property="og:title" content="FLOE — For Love of Education: Redefine the Route">
+<meta property="og:description" content="Supporting neurodivergent learners, teens, and young adults with individualized coaching, mentorship, and community.">
+<meta property="og:image" content="https://forloveofeducation.com/imgs/community.jpg">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FLOE — For Love of Education: Redefine the Route">
+<meta name="twitter:description" content="Supporting neurodivergent learners, teens, and young adults with individualized coaching, mentorship, and community.">
+<meta name="twitter:image" content="https://forloveofeducation.com/imgs/community.jpg">
+
 <title>FLOE — For Love of Education: Redefine the Route</title>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,700;0,900;1,300;1,700;1,900&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "FLOE — For Love of Education",
+  "alternateName": "FLOE",
+  "url": "https://forloveofeducation.com",
+  "description": "FLOE supports neurodivergent learners, teens, and young adults with individualized coaching, mentorship, and community-based programs.",
+  "founder": {
+    "@type": "Person",
+    "name": "Kristina Brooke Daniele",
+    "jobTitle": "Founder",
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Fordham University"
+    }
+  }
+}
+</script>
+
 <style>
   /* ============================================================
      CSS VARIABLES — Edit colors here to change the whole site
@@ -32,6 +75,7 @@
     --lavender: #7A6E9E;
     --muted: #6B6158;
     --rule: #DDD0BC;
+    --nav-h: 56px;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -46,14 +90,104 @@
     overflow-x: hidden;
   }
 
+  /* ─── SITE NAV ─── */
+  .site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--ink);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .nav-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--nav-h);
+  }
+
+  .nav-brand {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--cream);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 32px;
+  }
+
+  .nav-links a {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(251,247,240,0.75);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--cream); }
+
+  /* ─── SKIP LINK ─── */
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 8px;
+    z-index: 9999;
+    background: var(--ink);
+    color: var(--cream);
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 2px;
+    border: 2px solid var(--cream);
+  }
+  .skip-link:focus { left: 8px; }
+
+  /* ─── FOCUS STYLES ─── */
+  :focus-visible {
+    outline: 3px solid var(--terracotta);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  .site-nav :focus-visible,
+  .hero :focus-visible,
+  .programs-section :focus-visible,
+  .pricing-section :focus-visible,
+  .cta-section :focus-visible {
+    outline-color: var(--cream);
+    outline-offset: 4px;
+  }
+
+  /* ─── REDUCED MOTION ─── */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      animation-delay: 0ms !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* ─── ANCHOR OFFSET for sticky nav ─── */
+  section[id] { scroll-margin-top: calc(var(--nav-h) + 8px); }
+
   /* ============================================================
-     HERO SECTION — Top of page, dark background with FLOE name
-     and ecosystem rings diagram
+     HERO SECTION
      ============================================================ */
-  /* ─── HERO ─── */
   .hero {
     background: var(--ink);
-    min-height: 100vh;
+    min-height: calc(100vh - var(--nav-h));
     display: grid;
     grid-template-columns: 1fr 1fr;
     overflow: hidden;
@@ -82,7 +216,7 @@
   }
 
   .eyebrow {
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.22em;
     text-transform: uppercase;
@@ -116,7 +250,7 @@
 
   .hero-tagline {
     font-size: 20px;
-    font-weight: 300;
+    font-weight: 400;
     color: rgba(251,247,240,0.6);
     border-left: 3px solid var(--terracotta);
     padding-left: 36px;
@@ -125,28 +259,12 @@
     max-width: 420px;
   }
 
-  .hero-mission {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-size: 20px;
-    color: rgba(251,247,240,0.85);
-    line-height: 1.5;
-    max-width: 380px;
-    display: none;
-  }
-
   /* ============================================================
-     ECOSYSTEM RINGS — The overlapping circle diagram in the hero.
-     Each .ring-[name] controls position (top/left) and size.
-     To move a ring: change top/left values.
-     To resize a ring: change width/height.
-     z-index controls which ring appears on top.
+     ECOSYSTEM RINGS
      ============================================================ */
-  /* ─── ECOSYSTEM RINGS ─── */
   .hero-right {
     display: flex;
-    align-items: right;
-    /*justify-content: flex-start;*/
+    align-items: center;
     position: relative;
     z-index: 1;
     padding: 40px 8px 40px 0;
@@ -177,7 +295,6 @@
     box-shadow: 0 0 32px rgba(255,255,255,0.1);
   }
 
-  /* Learner — largest, center */
   .ring-learner {
     width: 192px; height: 192px;
     background: rgba(201,146,42,0.16);
@@ -186,7 +303,6 @@
     z-index: 5;
   }
 
-  /* Curiosity — medium, upper left, overlaps Learner */
   .ring-curiosity {
     width: 138px; height: 138px;
     background: rgba(196,96,58,0.14);
@@ -195,7 +311,6 @@
     z-index: 4;
   }
 
-  /* FLOE — medium, upper right, overlaps Learner */
   .ring-floe {
     width: 154px; height: 144px;
     background: rgba(122,110,158,0.14);
@@ -204,7 +319,6 @@
     z-index: 4;
   }
 
-  /* Mentors — medium-large, right, overlaps Learner + Support */
   .ring-mentors {
     width: 158px; height: 158px;
     background: rgba(94,142,114,0.14);
@@ -213,7 +327,6 @@
     z-index: 3;
   }
 
-  /* Community — large, lower center, overlaps Learner */
   .ring-community {
     width: 155px; height: 155px;
     background: rgba(160,100,60,0.12);
@@ -222,7 +335,6 @@
     z-index: 3;
   }
 
-  /* Goals — smaller, lower right, overlaps Mentors + Community */
   .ring-goals {
     width: 116px; height: 116px;
     background: rgba(255,255,255,0.05);
@@ -231,7 +343,6 @@
     z-index: 2;
   }
 
-  /* Support — 7th ring, sits in intersection of Learner, Curiosity & Community */
   .ring-support {
     width: 98px; height: 98px;
     background: rgba(251,247,240,0.12);
@@ -241,7 +352,7 @@
   }
 
   .ring-label {
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -261,7 +372,7 @@
 
   .ring-goals .ring-label {
     color: rgba(251,247,240,0.7);
-    font-size: 10px;
+    font-size: 11px;
   }
 
   .ring-floe .ring-label {
@@ -288,12 +399,8 @@
   }
 
   /* ============================================================
-     FOUNDER CIRCLE — Spinning dashed ring around the photo.
-     .f-circle-outer = the spinning dashed border
-     .f-circle-inner = the circle containing the photo
-     .f-dot = the small colored dots orbiting the circle
+     ANIMATED FOUNDER CIRCLE
      ============================================================ */
-  /* ─── ANIMATED FOUNDER CIRCLE ─── */
   .founder-illustration {
     position: relative;
     height: 380px;
@@ -302,14 +409,19 @@
     justify-content: center;
   }
 
-  .f-circle-outer {
+  .f-circle-outer-wrap {
     position: absolute;
-    width: 290px; height: 290px;
-    border-radius: 50%;
-    border: 2px dashed var(--rule);
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
+    width: 290px; height: 290px;
+  }
+
+  .f-circle-outer {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    border: 2px dashed var(--rule);
     animation: slowSpin 30s linear infinite;
+    will-change: transform;
   }
 
   .f-circle-inner {
@@ -320,27 +432,25 @@
     border: 1px solid var(--rule);
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 8px;
-    text-align: center;
-    padding: 24px;
     overflow: hidden;
   }
 
   .f-photo-placeholder {
-    width: 100%; height: 100%;
-    border-radius: 50%;
-    background: linear-gradient(160deg, var(--terracotta-light), var(--warm2));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 6px;
     position: absolute;
     top: 0; left: 0;
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    background: linear-gradient(160deg, var(--terracotta-light), var(--warm2));
+  }
+
+  .f-photo-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    border-radius: 50%;
   }
 
   .f-dot {
@@ -354,15 +464,13 @@
   .f-dot-4 { width: 8px; height: 8px; background: var(--lavender); top: 18%; right: 8%; }
 
   @keyframes slowSpin {
-    from { transform: translate(-50%, -50%) rotate(0deg); }
-    to { transform: translate(-50%, -50%) rotate(360deg); }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
   }
 
   /* ============================================================
-     PULL QUOTE — Terracotta band between hero and Who We Serve.
-     Edit the <p> inside .pull-quote to change the quote text.
+     PULL QUOTE
      ============================================================ */
-  /* ─── PULL QUOTE ─── */
   .pull-quote {
     background: var(--terracotta);
     padding: 48px 64px;
@@ -372,7 +480,7 @@
   }
 
   .pull-quote::before {
-    content: '"';
+    content: '\201C';
     font-family: 'Fraunces', serif;
     font-size: 280px;
     color: rgba(0,0,0,0.08);
@@ -380,9 +488,10 @@
     top: -60px; left: 20px;
     line-height: 1;
     pointer-events: none;
+    aria-hidden: true;
   }
 
-  .pull-quote p {
+  .pull-quote blockquote {
     font-family: 'Fraunces', serif;
     font-size: clamp(20px, 3vw, 30px);
     font-style: italic;
@@ -392,14 +501,13 @@
     line-height: 1.45;
     position: relative;
     z-index: 1;
+    border: none;
+    padding: 0;
   }
 
   /* ============================================================
-     WHO WE SERVE — Four client cards with photo placeholders.
-     .who-item = each individual client card
-     .photo-ph = photo placeholder blocks (swap with real <img> tags)
+     WHO WE SERVE
      ============================================================ */
-  /* ─── WHO WE SERVE ─── */
   .who-section {
     padding: 96px 64px;
     position: relative;
@@ -424,7 +532,7 @@
   }
 
   .section-label {
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.22em;
     text-transform: uppercase;
@@ -441,6 +549,16 @@
     background: var(--terracotta);
   }
 
+  .programs-section .section-label,
+  .pricing-section .section-label {
+    color: var(--gold);
+  }
+
+  .programs-section .section-label::after,
+  .pricing-section .section-label::after {
+    background: var(--gold);
+  }
+
   .section-h2 {
     font-family: 'Fraunces', serif;
     font-size: clamp(32px, 5vw, 52px);
@@ -455,16 +573,20 @@
     color: var(--terracotta);
   }
 
+  .programs-section .section-h2 { color: var(--cream); }
+  .programs-section .section-h2 em { color: var(--gold); }
+
   .section-p {
     font-size: 17px;
     color: var(--muted);
     max-width: 600px;
     margin-bottom: 16px;
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.75;
   }
 
-  /* Who — organic layout from Option 1 */
+  .programs-section .section-p { color: rgba(251,247,240,0.6); }
+
   .who-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -481,29 +603,26 @@
   .photo-ph {
     width: 100%;
     border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 10px;
+    overflow: hidden;
+    position: relative;
   }
 
   .photo-ph.tall {
-    min-height: 280px;
+    height: 280px;
     background: linear-gradient(135deg, var(--terracotta-light), var(--sage-light));
   }
 
   .photo-ph.short {
-    min-height: 180px;
+    height: 180px;
     background: linear-gradient(135deg, var(--sage-light), var(--gold-light));
   }
 
-  .photo-ph-label {
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    font-weight: 600;
+  .photo-ph img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
   }
 
   .who-content-col {
@@ -532,20 +651,14 @@
   .who-item p {
     font-size: 15px;
     color: var(--muted);
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.65;
     margin: 0;
   }
 
   /* ============================================================
-     OUR PROGRAMS — Dark section with WONDER, SOAR, and
-     Soar with Wonder program cards.
-     .prog.wonder = WONDER card
-     .prog.soar = SOAR card  
-     .prog.soar-wonder = Soar with Wonder full-width card
-     .prog-promise = the italic quote at the bottom of each card
+     OUR PROGRAMS
      ============================================================ */
-  /* ─── PROGRAMS — Option 3 style ─── */
   .programs-section {
     background: var(--ink);
     padding: 96px 64px;
@@ -580,7 +693,17 @@
 
   .prog:hover { border-color: rgba(255,255,255,0.2); }
   .prog.wonder { border-top: 3px solid var(--gold); }
-  .prog.soar { border-top: 3px solid var(--sage); margin-top: 48px; }
+  .prog.soar { border-top: 3px solid var(--sage); margin-top: 0; }
+
+  .prog.soar-wonder {
+    border: 2px solid rgba(196,96,58,0.3);
+    border-top: 3px solid var(--terracotta);
+    background: rgba(251,247,240,0.06);
+    position: relative;
+    overflow: hidden;
+    padding: 48px 40px;
+    margin-top: 32px;
+  }
 
   .prog-initial {
     font-family: 'Fraunces', serif;
@@ -596,6 +719,12 @@
   .prog.wonder .prog-initial { color: var(--gold); }
   .prog.soar .prog-initial { color: var(--sage); }
 
+  .prog.soar-wonder .prog-initial {
+    font-size: 90px;
+    color: var(--terracotta);
+    opacity: 0.15;
+  }
+
   .prog h3 {
     font-family: 'Fraunces', serif;
     font-size: 36px;
@@ -607,8 +736,13 @@
   .prog.wonder h3 { color: #F5D68A; }
   .prog.soar h3 { color: #A8E0C0; }
 
+  .prog.soar-wonder h3 {
+    color: var(--terracotta);
+    font-size: 32px;
+  }
+
   .prog-sub {
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
@@ -617,6 +751,8 @@
     display: block;
     position: relative;
   }
+
+  .prog.soar-wonder .prog-sub { color: rgba(251,247,240,0.65); }
 
   .prog p {
     font-size: 15px;
@@ -627,6 +763,11 @@
     position: relative;
   }
 
+  .prog.soar-wonder p {
+    color: rgba(251,247,240,0.88);
+    font-weight: 400;
+  }
+
   .prog-promise {
     font-family: 'Fraunces', serif;
     font-style: italic;
@@ -635,18 +776,20 @@
     border-top: 1px solid rgba(255,255,255,0.15);
     display: block;
     position: relative;
+    margin-bottom: 0;
   }
 
   .prog.wonder .prog-promise { color: #F5D68A; }
   .prog.soar .prog-promise { color: #A8E0C0; }
 
+  .prog.soar-wonder .prog-promise {
+    color: var(--terracotta);
+    border-top-color: rgba(196,96,58,0.3);
+  }
+
   /* ============================================================
-     HOW IT WORKS — Numbered steps with photo placeholder.
-     .how-item = each numbered step
-     .how-dot = the colored circle with the step number
-     .how-photo = photo placeholder (swap with real <img>)
+     HOW IT WORKS
      ============================================================ */
-  /* ─── HOW IT WORKS ─── */
   .how-section {
     padding: 96px 64px;
     position: relative;
@@ -705,7 +848,7 @@
   .how-dot.d2 { background: var(--sage); color: var(--ink); }
   .how-dot.d3 { background: var(--gold); color: var(--ink); }
   .how-dot.d4 { background: var(--lavender); }
-  .how-dot.d5 { background: var(--ink); }
+  .how-dot.d5 { background: var(--ink); border: 1px solid var(--rule); }
 
   .how-text strong {
     display: block;
@@ -719,20 +862,25 @@
   .how-text span {
     font-size: 14px;
     color: var(--muted);
-    font-weight: 300;
+    font-weight: 400;
   }
 
   .how-photo {
     border-radius: 4px;
-    /** min-height: 400px;*/
     background: linear-gradient(160deg, var(--terracotta-light) 0%, var(--sage-light) 50%, var(--gold-light) 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 10px;
     position: relative;
     z-index: 1;
+    overflow: hidden;
+    min-height: 380px;
+  }
+
+  .how-photo img {
+    width: 100%;
+    height: 100%;
+    min-height: 380px;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
   }
 
   .how-photo::after {
@@ -747,11 +895,8 @@
   }
 
   /* ============================================================
-     PRICING — Dark section with price display.
-     .price-num = the large $9,500 number
-     .access-bubble = the sliding scale note
+     PRICING
      ============================================================ */
-  /* ─── PRICING ─── */
   .pricing-section {
     background: var(--ink);
     padding: 96px 64px;
@@ -794,7 +939,7 @@
   .pricing-text p {
     font-size: 16px;
     color: rgba(251,247,240,0.6);
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.75;
     margin-bottom: 12px;
   }
@@ -804,7 +949,7 @@
     padding: 14px 18px;
     margin-top: 8px;
     font-size: 15px;
-    color: rgba(251,247,240,0.55);
+    color: rgba(251,247,240,0.75);
     font-style: italic;
     font-family: 'Fraunces', serif;
   }
@@ -843,37 +988,8 @@
   }
 
   /* ============================================================
-     SOAR WITH WONDER CARD — Full-width third program card.
-     Sits below WONDER and SOAR in the programs section.
+     FOUNDER SECTION
      ============================================================ */
-  /* Soar with Wonder — full width, lighter */
-  .prog.soar-wonder {
-    border: 2px solid rgba(196,96,58,0.3);
-    border-top: 3px solid var(--terracotta);
-    background: rgba(251,247,240,0.06);
-    position: relative;
-    overflow: hidden;
-    padding: 48px 40px;
-  }
-
-  .prog.soar-wonder .prog-initial {
-    font-family: 'Fraunces', serif;
-    font-size: 90px;
-    font-weight: 900;
-    line-height: 0.8;
-    display: block;
-    position: absolute;
-    top: 20px; right: 24px;
-  }
-
-  /* ============================================================
-     FOUNDER SECTION — Kristina Brooke bio with animated circle.
-     .founder-illustration = the spinning circle frame
-     .founder-bio = text, title, and credential tags
-     .cred = each individual credential pill/tag
-     To add a credential: copy a <span class="cred"> line in HTML
-     ============================================================ */
-  /* ─── FOUNDER ─── */
   .founder-section {
     padding: 96px 64px;
     position: relative;
@@ -937,7 +1053,7 @@
   .founder-bio p {
     font-size: 16px;
     color: var(--muted);
-    font-weight: 300;
+    font-weight: 400;
     margin-bottom: 16px;
     line-height: 1.75;
   }
@@ -960,13 +1076,8 @@
   }
 
   /* ============================================================
-     WHAT WE BELIEVE — Numbered belief statements.
-     Each .belief-item has a colored left border.
-     Border colors cycle: terracotta, sage, gold, lavender, ink.
-     .belief-marker = the number (01, 02, etc.)
-     .belief-text = the belief statement
+     WHAT WE BELIEVE
      ============================================================ */
-  /* ─── BELIEFS — Option 1 layout, Option 3 colored borders ─── */
   .beliefs-section {
     background: var(--warm1);
     padding: 96px 64px;
@@ -1004,7 +1115,6 @@
 
   .belief-item:last-child { border-bottom: none; }
 
-  /* Colored left borders like Option 3 */
   .belief-item:nth-child(1) { border-left: 4px solid var(--terracotta); padding-left: 20px; }
   .belief-item:nth-child(2) { border-left: 4px solid var(--sage); padding-left: 20px; }
   .belief-item:nth-child(3) { border-left: 4px solid var(--gold); padding-left: 20px; }
@@ -1032,11 +1142,8 @@
   .belief-text strong { font-weight: 700; }
 
   /* ============================================================
-     CALL TO ACTION — Dark section at the bottom.
-     Edit the <h2> text, <p> text, and .cta-btn link href
-     to change the CTA message and destination URL.
+     CALL TO ACTION
      ============================================================ */
-  /* ─── CTA — Option 3 style ─── */
   .cta-section {
     background: var(--ink);
     padding: 96px 64px;
@@ -1076,7 +1183,7 @@
     color: rgba(251,247,240,0.6);
     max-width: 460px;
     margin: 0 auto 48px;
-    font-weight: 300;
+    font-weight: 400;
     position: relative;
     z-index: 1;
   }
@@ -1115,12 +1222,8 @@
   }
 
   /* ============================================================
-     FOOTER — Brand name and website link.
-     Edit .footer-brand for the name,
-     .footer-tagline for the tagline,
-     and the <a> href for the link URL.
+     FOOTER
      ============================================================ */
-  /* ─── FOOTER — Option 3 style ─── */
   footer {
     border-top: 1px solid var(--rule);
     padding: 32px 64px;
@@ -1154,11 +1257,8 @@
   }
 
   /* ============================================================
-     ANIMATIONS — Fade-up on load for hero text,
-     float-in for ecosystem rings.
-     animation-delay staggers each element for a reveal effect.
+     ANIMATIONS
      ============================================================ */
-  /* ─── ANIMATIONS ─── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -1172,7 +1272,6 @@
   .eyebrow { animation-delay: 0.1s; }
   .hero-name { animation-delay: 0.25s; }
   .hero-tagline { animation-delay: 0.4s; }
-  .hero-mission { animation-delay: 0.55s; }
 
   @keyframes floatIn {
     from { opacity: 0; transform: scale(0.85); }
@@ -1193,15 +1292,16 @@
   .ring-floe { animation-delay: 1.4s; }
 
   /* ============================================================
-     RESPONSIVE / MOBILE — Breakpoints at 900px and 480px.
-     At 900px: hero stacks vertically, grids go single column.
-     At 480px: further size reductions for small phones.
+     RESPONSIVE
      ============================================================ */
-  /* ─── RESPONSIVE ─── */
   @media (max-width: 900px) {
+    .nav-inner { padding: 0 28px; }
+    .nav-links { gap: 20px; }
+    .nav-links a { font-size: 11px; }
+
     .hero {
       grid-template-columns: 1fr;
-      min-height: auto;
+      min-height: 0;
     }
 
     .hero-left {
@@ -1215,11 +1315,11 @@
     }
 
     .ecosystem {
-      width: 340px;
-      height: 380px;
-      transform: scale(0.85);
-      transform-origin: center top;
-      margin-left: 0;
+      width: 480px;
+      height: 470px;
+      transform: scale(0.75);
+      transform-origin: center center;
+      margin: -59px 0 -59px -14px;
     }
 
     .hero-name { font-size: 80px; }
@@ -1241,16 +1341,21 @@
     .founder-grid { grid-template-columns: 1fr; gap: 32px; }
 
     .programs-grid { grid-template-columns: 1fr; }
-    .prog.soar { margin-top: 0 !important; }
 
     .belief-marker { font-size: 28px; }
+  }
+
+  @media (max-width: 600px) {
+    .nav-inner { flex-direction: column; height: auto; padding: 12px 20px; gap: 8px; }
+    .nav-links { flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .nav-links a { font-size: 10px; }
   }
 
   @media (max-width: 480px) {
     .hero-name { font-size: 64px; }
     .hero-left { padding: 48px 24px 32px; }
     .hero-right { padding: 16px 24px 48px; }
-    .ecosystem { width: 280px; height: 320px; transform: scale(0.75); }
+    .ecosystem { transform: scale(0.58); margin: -98px 0 -98px -11px; }
 
     .pull-quote,
     .who-section,
@@ -1266,67 +1371,37 @@
     .price-num { font-size: 60px; }
     .prog { padding: 32px 24px; }
   }
-
-  /* ─── SKIP LINK ─── */
-  .skip-link {
-    position: absolute;
-    left: -9999px;
-    top: 8px;
-    z-index: 9999;
-    background: var(--ink);
-    color: var(--cream);
-    padding: 12px 20px;
-    font-size: 14px;
-    font-weight: 700;
-    text-decoration: none;
-    border-radius: 2px;
-    border: 2px solid var(--cream);
-  }
-  .skip-link:focus { left: 8px; }
-
-  /* ─── FOCUS STYLES ─── */
-  :focus-visible {
-    outline: 3px solid var(--terracotta);
-    outline-offset: 3px;
-    border-radius: 2px;
-  }
-  .hero :focus-visible,
-  .programs-section :focus-visible,
-  .pricing-section :focus-visible,
-  .cta-section :focus-visible {
-    outline-color: var(--cream);
-    outline-offset: 4px;
-  }
-
-  /* ─── REDUCED MOTION ─── */
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      animation-delay: 0ms !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-    }
-  }
 </style>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
+<!-- SITE NAV -->
+<header>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand" aria-label="FLOE — For Love of Education, return to top">FLOE</a>
+    <ul class="nav-links" role="list">
+      <li><a href="#who">Who We Serve</a></li>
+      <li><a href="#programs">Programs</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#pricing">Investment</a></li>
+      <li><a href="#founder">About</a></li>
+      <li><a href="#contact">Get Started</a></li>
+    </ul>
+  </div>
+</nav>
+
 <!-- ============================================================
      HERO SECTION
-     Left side: FLOE name, tagline, mission statement
+     Left side: FLOE name, tagline
      Right side: Ecosystem rings diagram
-     Background: Dark (--ink)
      ============================================================ -->
-<!-- HERO -->
-<header>
 <section class="hero" aria-label="Introduction">
   <div class="hero-left">
     <p class="eyebrow">For Love of Education</p>
     <h1 class="hero-name" aria-label="FLOE">F<span class="accent">L</span>OE</h1>
     <p class="hero-tagline">Redefine the Route</p>
-    <p class="hero-mission">Empowering the curious through community support.</p>
   </div>
 
   <div class="hero-right">
@@ -1356,28 +1431,22 @@
     </div>
   </div>
 </section>
-
-<!-- ============================================================
-     PULL QUOTE BAND
-     Terracotta background strip between hero and content.
-     Edit the <p> text to change the quote.
-     ============================================================ -->
-<!-- PULL QUOTE -->
-<section class="pull-quote" aria-label="Tagline">
-  <p>Empowering the curious to learn with community support.</p>
-</section>
 </header>
 
+<!-- PULL QUOTE -->
+<section class="pull-quote" aria-label="Mission statement">
+  <blockquote>
+    Empowering the curious to learn with community support.
+  </blockquote>
+</section>
+
 <!-- ============================================================
-     WHO WE SERVE SECTION
-     Four .who-item cards describing client groups.
-     Left column: photo placeholders (replace with real photos)
-     Right column: client descriptions
-     To add a client: copy a .who-item block and edit
+     MAIN CONTENT
      ============================================================ -->
-<!-- WHO WE SERVE -->
 <main id="main-content">
-<section class="who-section" aria-labelledby="who-heading">
+
+<!-- WHO WE SERVE -->
+<section class="who-section" id="who" aria-labelledby="who-heading">
   <div class="section-inner">
     <p class="section-label">Who We Serve</p>
     <h2 class="section-h2" id="who-heading">For learners who are <em>done with the default.</em></h2>
@@ -1385,11 +1454,11 @@
 
     <div class="who-grid">
       <div class="who-photo-col">
-        <div class="photo-ph tall" role="img" aria-label="Community photo">
-          <span class="photo-ph-label" aria-hidden="true"><img src="/imgs/community.jpg" alt="Community photo" style="width:100%;height:100%;object-fit:cover;object-position:center top"></span>
+        <div class="photo-ph tall">
+          <img src="imgs/community.jpg" alt="FLOE community members gathered together" width="800" height="533" loading="lazy">
         </div>
-        <div class="photo-ph short" role="img" aria-label="Learner moment photo">
-          <span class="photo-ph-label" aria-hidden="true"><img src="/imgs/session.jpg" alt="Learner moment photo" style="width:100%;height:100%;object-fit:cover;object-position:center top"></span>
+        <div class="photo-ph short">
+          <img src="imgs/session.jpg" alt="A FLOE learner and coach in a one-on-one session" width="800" height="533" loading="lazy">
         </div>
       </div>
       <div class="who-content-col">
@@ -1414,118 +1483,97 @@
   </div>
 </section>
 
-<!-- ============================================================
-     OUR PROGRAMS SECTION
-     Dark background with three program cards:
-     1. WONDER (upper left)
-     2. SOAR (upper right, aligned with WONDER)
-     3. Soar with Wonder (full width below)
-     Edit program text inside each .prog div
-     ============================================================ -->
 <!-- PROGRAMS -->
-<section class="programs-section" aria-labelledby="programs-heading">
+<section class="programs-section" id="programs" aria-labelledby="programs-heading">
   <div class="section-inner">
-    <p class="section-label" style="color:var(--gold)">Our Programs</p>
-    <h2 class="section-h2" id="programs-heading" style="color:var(--cream)">Three pathways. <em style="color:var(--gold)">One destination:</em> yourself.</h2>
-    <p class="section-p" style="color:rgba(251,247,240,0.6)">Every FLOE client enters the program that fits where they actually are, based on their discovery assessment.</p>
+    <p class="section-label">Our Programs</p>
+    <h2 class="section-h2" id="programs-heading">Three pathways. <em>One destination:</em> yourself.</h2>
+    <p class="section-p">Every FLOE client enters the program that fits where they actually are, based on their discovery assessment.</p>
 
     <div class="programs-grid">
       <div class="prog wonder">
         <span class="prog-initial" aria-hidden="true">W</span>
         <h3>WONDER</h3>
-        <span class="prog-sub">Rediscover · Reconnect · Reimagine</span>
+        <p class="prog-sub">Rediscover · Reconnect · Reimagine</p>
         <p>For learners who need to slow down and remember who they are before deciding where they're going. Open-ended, curiosity-driven, reflective.</p>
-        <span class="prog-promise">"Before we go anywhere — let's remember who you are."</span>
+        <p class="prog-promise">"Before we go anywhere — let's remember who you are."</p>
       </div>
-      <div class="prog soar" style="margin-top:0;">
+      <div class="prog soar">
         <span class="prog-initial" aria-hidden="true">S</span>
         <h3>SOAR</h3>
-        <span class="prog-sub">Clarify · Build · Launch</span>
+        <p class="prog-sub">Clarify · Build · Launch</p>
         <p>For learners who have a sense of direction but keep hitting walls. Action-oriented, goal-focused, structured for momentum.</p>
-        <span class="prog-promise">"You know where you want to go — let's build the runway."</span>
+        <p class="prog-promise">"You know where you want to go — let's build the runway."</p>
       </div>
     </div>
 
-    <!-- Soar with Wonder - third program, full width, lighter -->
-    <div class="prog soar-wonder" style="margin-top:32px;">
-      <span class="prog-initial" aria-hidden="true" style="color:var(--terracotta);opacity:0.15;">SW</span>
-      <h3 style="color:var(--terracotta);font-size:32px;">Soar with Wonder</h3>
-      <span class="prog-sub" style="color:rgba(251,247,240,0.65);">Explore · Play · Grow · Wonder</span>
-      <p style="color:rgba(251,247,240,0.88);font-weight:400;">For families with young learners (2–14) who want to build a culture of curiosity from the very beginning. Before the system defines them, we help families design a learning life that celebrates who their child already is — and nurtures who they're becoming.</p>
-      <span class="prog-promise" style="color:var(--terracotta);border-color:rgba(196,96,58,0.3);">"It's never too early to fall in love with learning."</span>
+    <!-- Soar with Wonder - third program, full width -->
+    <div class="prog soar-wonder">
+      <span class="prog-initial" aria-hidden="true">SW</span>
+      <h3>Soar with Wonder</h3>
+      <p class="prog-sub">Explore · Play · Grow · Wonder</p>
+      <p>For families with young learners (2–14) who want to build a culture of curiosity from the very beginning. Before the system defines them, we help families design a learning life that celebrates who their child already is — and nurtures who they're becoming.</p>
+      <p class="prog-promise">"It's never too early to fall in love with learning."</p>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     HOW IT WORKS SECTION
-     Five numbered steps explaining the FLOE process.
-     Each .how-item = one step
-     Right side: photo placeholder (replace with real photo)
-     ============================================================ -->
 <!-- HOW IT WORKS -->
-<section class="how-section" aria-labelledby="how-heading">
-  <div class="section-inner" style="position:relative;z-index:1;">
+<section class="how-section" id="how" aria-labelledby="how-heading">
+  <div class="section-inner">
     <p class="section-label">How It Works</p>
     <h2 class="section-h2" id="how-heading">A full-year partnership, <em>built around you.</em></h2>
 
     <div class="how-grid">
-      <ul class="how-list">
+      <ol class="how-list">
         <li class="how-item">
-          <div class="how-dot d1">01</div>
+          <div class="how-dot d1" aria-hidden="true">01</div>
           <div class="how-text">
             <strong>Discovery Assessment</strong>
             <span>Multi-perspective intake — learner, parent, and support. We map the whole ecosystem first.</span>
           </div>
         </li>
         <li class="how-item">
-          <div class="how-dot d2">02</div>
+          <div class="how-dot d2" aria-hidden="true">02</div>
           <div class="how-text">
             <strong>Program Placement</strong>
             <span>WONDER or SOAR — based on where you actually are, not where anyone thinks you should be.</span>
           </div>
         </li>
         <li class="how-item">
-          <div class="how-dot d3">03</div>
+          <div class="how-dot d3" aria-hidden="true">03</div>
           <div class="how-text">
             <strong>Monthly 1:1 Sessions</strong>
             <span>12 sessions over the year. Real conversations, real progress.</span>
           </div>
         </li>
         <li class="how-item">
-          <div class="how-dot d4">04</div>
+          <div class="how-dot d4" aria-hidden="true">04</div>
           <div class="how-text">
             <strong>Quarterly Benchmarks</strong>
             <span>Progress on your terms — measuring what matters to you, not a standardized rubric.</span>
           </div>
         </li>
         <li class="how-item">
-          <div class="how-dot d5">05</div>
+          <div class="how-dot d5" aria-hidden="true">05</div>
           <div class="how-text">
-            <strong>Community & Mentor Network</strong>
+            <strong>Community &amp; Mentor Network</strong>
             <span>A cohort of 5–7 clients who grow together, plus a mentor network for ecosystem support.</span>
           </div>
         </li>
-      </ul>
-      <div class="how-photo" role="img" aria-label="img src='/imgs/learner.jpg' alt='Session photo' style="width:100%;height:100%;object-fit:cover;object-position:center top;">
-        <span style="font-size:12px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;font-weight:600;" aria-hidden="true"><img src="/imgs/learner.jpg" alt="Session photo" style="width:100%;height:100%;object-fit:cover;object-position:center top;"></span>
+      </ol>
+      <div class="how-photo">
+        <img src="imgs/learner.jpg" alt="A FLOE learner engaged in discovery-based work" width="1260" height="840" loading="lazy">
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     PRICING SECTION
-     Dark background with price display.
-     Edit .price-num to change the price ($9,500)
-     Edit .price-period for the billing description
-     Edit .access-bubble for the sliding scale note
-     ============================================================ -->
 <!-- PRICING -->
-<section class="pricing-section" aria-labelledby="pricing-heading">
+<section class="pricing-section" id="pricing" aria-labelledby="pricing-heading">
   <div class="pricing-inner">
     <div class="pricing-text">
-      <p class="section-label" style="color:var(--gold)">Investment</p>
+      <p class="section-label">Investment</p>
       <h2 id="pricing-heading">A full year.<br><em>Real change.</em></h2>
       <p>Cohort model — 5 to 7 clients per year. Community is built into the structure from day one, not added as an afterthought.</p>
       <div class="access-bubble">"We believe everyone has the right to learn in the way that best suits them." Sliding scale and scholarship access available.</div>
@@ -1537,40 +1585,30 @@
   </div>
 </section>
 
-<!-- ============================================================
-     WHO YOU'RE WORKING WITH (FOUNDER) SECTION
-     Left: animated spinning circle with photo
-     Right: name, title, bio paragraphs, credential tags
-     
-     TO SWAP IN A NEW PHOTO:
-     Find the <img> tag inside .f-photo-placeholder
-     and replace the src with your new image URL or base64
-     
-     TO ADD A CREDENTIAL:
-     Copy a <span class="cred"> line and paste it in .cred-row
-     ============================================================ -->
 <!-- FOUNDER -->
-<section class="founder-section" aria-label="Who You're Working With">
+<section class="founder-section" id="founder" aria-labelledby="founder-heading">
   <div class="section-inner">
     <p class="section-label">Who You're Working With</p>
     <div class="founder-grid">
       <div class="founder-photo-wrap">
         <div class="founder-illustration">
-          <div class="f-circle-outer"></div>
+          <div class="f-circle-outer-wrap" aria-hidden="true"><div class="f-circle-outer"></div></div>
           <div class="f-circle-inner">
-            <div class="f-photo-placeholder"><img src="/imgs/founder.jpg" alt="Founder photo" style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:50%;" ></div>
+            <div class="f-photo-placeholder">
+              <img src="imgs/founder.jpg" alt="Kristina Brooke Daniele, Founder of FLOE" width="1440" height="1440" loading="lazy">
+            </div>
           </div>
-          <div class="f-dot f-dot-1"></div>
-          <div class="f-dot f-dot-2"></div>
-          <div class="f-dot f-dot-3"></div>
-          <div class="f-dot f-dot-4"></div>
+          <div class="f-dot f-dot-1" aria-hidden="true"></div>
+          <div class="f-dot f-dot-2" aria-hidden="true"></div>
+          <div class="f-dot f-dot-3" aria-hidden="true"></div>
+          <div class="f-dot f-dot-4" aria-hidden="true"></div>
         </div>
       </div>
       <div class="founder-bio">
-        <h3>Kristina Brooke Daniele</h3>
-        <span class="founder-title">Founder, FLOE · Educator · Author · Advocate</span>
+        <h3 id="founder-heading">Kristina Brooke Daniele</h3>
+        <p class="founder-title">Founder, FLOE · Educator · Author · Advocate</p>
         <p>With 21 years of experience spanning classroom teaching, curriculum design, and independent consulting, Kristina Brooke built FLOE because she lived the gap it fills — as a neurodivergent educator, a parent of a ND young adult, and someone who has been her own first client.</p>
-        <p>She is the author of the Amazon bestselling "Civil Rights Then & Now" and holds a Masters of Science in Teaching from Fordham University. She doesn't just understand this work — she is this work.</p>
+        <p>She is the author of the Amazon bestselling "Civil Rights Then &amp; Now" and holds a Masters of Science in Teaching from Fordham University. She doesn't just understand this work — she is this work.</p>
         <div class="cred-row">
           <span class="cred">Masters of Science in Teaching · Fordham University</span>
           <span class="cred">21 Years Experience</span>
@@ -1586,71 +1624,53 @@
   </div>
 </section>
 
-<!-- ============================================================
-     WHAT WE BELIEVE SECTION
-     Warm background with five numbered belief statements.
-     Each .belief-item = one belief
-     .belief-marker = the number
-     .belief-text = the statement (use <strong> for bold words)
-     Left border colors are set in CSS by nth-child order
-     ============================================================ -->
 <!-- BELIEFS -->
-<section class="beliefs-section" aria-labelledby="beliefs-heading">
+<section class="beliefs-section" id="beliefs" aria-labelledby="beliefs-heading">
   <div class="section-inner">
     <p class="section-label">What We Believe</p>
     <h2 class="section-h2" id="beliefs-heading">We know this <em>because we live it.</em></h2>
     <div class="beliefs-flow">
       <div class="belief-item">
-        <span class="belief-marker">01</span>
+        <span class="belief-marker" aria-hidden="true">01</span>
         <span class="belief-text"><strong>Neurodiversity is both a strength and a disability.</strong> We hold both truths without needing to resolve the tension between them.</span>
       </div>
       <div class="belief-item">
-        <span class="belief-marker">02</span>
+        <span class="belief-marker" aria-hidden="true">02</span>
         <span class="belief-text"><strong>Success looks different for every person</strong> because our brains and needs are different. We don't measure the wrong things.</span>
       </div>
       <div class="belief-item">
-        <span class="belief-marker">03</span>
+        <span class="belief-marker" aria-hidden="true">03</span>
         <span class="belief-text"><strong>Building bridges where gaps exist is the purpose of community.</strong> And community is built on strength, not deficit.</span>
       </div>
       <div class="belief-item">
-        <span class="belief-marker">04</span>
+        <span class="belief-marker" aria-hidden="true">04</span>
         <span class="belief-text"><strong>Everyone has the right to learn in the way that best suits them.</strong> The program bends like water.</span>
       </div>
       <div class="belief-item">
-        <span class="belief-marker">05</span>
+        <span class="belief-marker" aria-hidden="true">05</span>
         <span class="belief-text"><strong>The learner is always the center.</strong> Everything — including this program — orbits them.</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     CALL TO ACTION SECTION
-     Dark background with heading, subtext, and button.
-     Edit the <h2>, <p>, and <a> href to customize.
-     ============================================================ -->
 <!-- CTA -->
-<section class="cta-section" aria-labelledby="cta-heading">
+<section class="cta-section" id="contact" aria-labelledby="cta-heading">
   <h2 id="cta-heading">Ready to redefine<br><em>the route?</em></h2>
   <p>Spaces are limited to 5–7 clients per cohort. Start with a conversation.</p>
   <a href="https://forloveofeducation.com" class="cta-btn">Begin the Conversation</a>
   <span class="cta-url">forloveofeducation.com</span>
 </section>
 
-<!-- ============================================================
-     FOOTER
-     Edit .footer-brand for the brand name
-     Edit .footer-tagline for the tagline
-     Edit the <a> href and text for the website link
-     ============================================================ -->
-<!-- FOOTER -->
 </main>
+
+<!-- FOOTER -->
 <footer>
   <div>
     <div class="footer-brand">FLOE</div>
     <div class="footer-tagline">For Love of Education · Redefine the Route</div>
   </div>
-  <a href="https://forloveofeducation.com">forloveofeducation.com</a>
+  <a href="https://forloveofeducation.com">Visit forloveofeducation.com</a>
 </footer>
 
 </body>
