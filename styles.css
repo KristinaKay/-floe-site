@@ -1205,6 +1205,38 @@ section[id] { scroll-margin-top: calc(var(--nav-h) + 8px); }
 }
 
 .belief-text strong { font-weight: 700; }
+/* ============================================================
+   TRANSITION IMAGE
+   ============================================================ */
+/* Make transition image match text height */
+.full-height {
+  height: 100%;
+  min-height: 100%;
+}
+/* Move background shape to LEFT for transition section */
+#transition::before {
+  right: auto;
+  left: -120px;
+}
+#transition .photo-ph img {
+  object-position: right center;
+}
+#transition .photo-ph::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(242, 232, 214, 0.15);
+  pointer-events: none;
+}
+#transition::before {
+  top: -80px; /* slightly reduce vertical overlap */
+}
+#transition .section-label {
+  color: var(--terracotta);
+}
+.who-grid {
+  align-items: stretch; /* ensures both columns match */
+}
 
 /* ============================================================
    CALL TO ACTION
