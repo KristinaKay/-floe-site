@@ -494,6 +494,9 @@ section[id] { scroll-margin-top: calc(var(--nav-h) + 8px); }
   text-align: center;
   position: relative;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pull-quote::before {
